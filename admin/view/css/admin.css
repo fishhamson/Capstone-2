@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+}
+
+header {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.header__bg {
+  margin: auto;
+  width: 70%;
+}
+
+.header__iphone .navbar-expand-lg .navbar-nav .nav-link:nth-of-type(1) {
+  margin: 0 3rem;
+}
+
+.header__iphone .navbar-expand-lg .navbar-nav .nav-link:nth-of-type(3) {
+  margin-left: 48rem;
+}
+
+.header__bg .navbar-nav .nav-link,
+.header__bg .navbar-brand {
+  color: white;
+}
+
+#navbarPhone .nav-link div i {
+  padding-left: 0.4rem;
+}/*# sourceMappingURL=admin.css.map */
