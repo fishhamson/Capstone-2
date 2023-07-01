@@ -14,9 +14,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css">
     <!-- my scss  -->
     <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="./css/modal.css">
 </head>
 
 <body>
+    <!-- header  -->
     <header class="header__iphone">
         <nav class="navbar navbar-expand-lg header__bg">
             <a class="navbar-brand" href="#">
@@ -54,6 +56,225 @@
             </div>
         </nav>
     </header>
+    <!-- body  -->
+    <section class="management container py-5">
+        <div class="management__content mt-5">
+            <div class="management__item d-flex justify-content-between mb-2 py-3 px-2">
+                <h3 class="management__left">Phone Management</h3>
+                <div class="management__right">
+                    <button type="button" class="btn btn-banner" data-toggle="modal" data-target="#myModal"
+                        id="btnThem">
+                        <i class="fa-solid fa-circle-plus me-2"></i>
+                        Add Phone
+                    </button>
+                </div>
+            </div>
+            <div class="management__table">
+                <table class="table display" id="myTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Photo</th>
+                            <th>Discription</th>
+                            <th>
+                                <i class="fa fa-cog"></i>
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTablePhone"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <!-- footer  -->
+    <footer class="footer__iphone ">
+        <section class="footer__top d-flex justify-content-center p-4">
+            <div class="footer__left mr-5">
+                <span>Get connected with us on social networks:</span>
+            </div>
+            <div class="footer__right">
+                <a href="#" class="mr-4">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="mr-4">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="mr-4">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="#" class="mr-4">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="mr-4">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" class="mr-4">
+                    <i class="fab fa-github"></i>
+                </a>
+
+            </div>
+        </section>
+        <section class="footer__bottom container text-center mt-5">
+            <div class="row mt-3">
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h6 class="mb-4">
+                        <i class="fa-lg fa-solid fa-robot me-3"></i>
+                        CYBER PHONE
+                    </h6>
+                    <p>We pride ourselves on our efficiency and hard work, but most of all our ability to source you the
+                        best quality and best value products and devices in the market.</p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h6 class="mb-4">BRANDS</h6>
+                    <p><a href="#">iphone</a></p>
+                    <p><a href="#">SamSung</a></p>
+                    <p><a href="#">Xiaomi</a></p>
+                    <p><a href="#">Oppo</a></p>
+
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h6 class="mb-4">USEFUL LINKS</h6>
+                    <p> <a href="#">Pricing</a></p>
+                    <p> <a href="#">Settings</a></p>
+                    <p><a href="#">Orders</a></p>
+                    <p><a href="#">Help</a></p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h6 class="mb-4">CONTACT</h6>
+                    <p>
+                        <i class="fas fa-home mr-2"></i>
+                        Da Nang, Thanh Khe, VN
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope mr-2"></i>
+                        cyberphone@mail.com
+                    </p>
+                    <p>
+                        <i class="fas fa-phone mr-2"></i>
+                        + 01 234 567 88
+                    </p>
+                    <p>
+                        <i class="fas fa-print mr-2"></i>
+                        + 01 234 567 89
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="footer__end text-center p-4">
+            © 2022 Copyright:
+            <a href="#">Cyber Phone</a>
+        </section>
+    </footer>
+
+    <!-- the modal  -->
+    <section class="modal fade modal__phone" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="head-form mb-0 header__modal">
+                    <h2 id="header-title text-center">Phone Management</h2>
+                </div>
+                <div class="modal-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i
+                                            class="fa-solid fa-mobile-screen-button"></i></span>
+                                </div>
+                                <input type="text" name="name" id="name" class="form-control input-sm"
+                                    placeholder="Phone name">
+                            </div>
+                            <span class="sp-thongbao" id="TBname"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa-regular fa-dollar-sign"></i></span>
+                                </div>
+                                <input type="text" id="price" class="form-control input-sm" placeholder="Price">
+                            </div>
+                            <span class="sp-thongbao" id="TBprice"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i
+                                            class="fa-solid fa-mobile-screen-button"></i></span>
+                                </div>
+                                <input type="text" id="screen" class="form-control input-sm" placeholder="Screen">
+                            </div>
+                            <span class="sp-thongbao" id="TBscreen"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa-solid fa-camera"></i></span>
+                                </div>
+                                <input type="text" id="backCamera" class="form-control input-sm"
+                                    placeholder="Back Camera">
+                            </div>
+                            <span class="sp-thongbao" id="TBbackCamera"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa-solid fa-camera"></i></span>
+                                </div>
+                                <input type="text" id="frontCamera" class="form-control input-sm"
+                                    placeholder="Front Camera">
+                            </div>
+                            <span class="sp-thongbao" id="TBfrontCamera"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa-solid fa-link"></i></span>
+                                </div>
+                                <input type="text" id="img" class="form-control input-sm" placeholder="Image link">
+                            </div>
+                            <span class="sp-thongbao" id="TBimg"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa-solid fa-comment"></i></span>
+                                </div>
+                                <input type="text" name="name" id="description" class="form-control input-sm"
+                                    placeholder="Description">
+                            </div>
+                            <span class="sp-thongbao" id="TBdescription"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa-solid fa-signature"></i></span>
+                                </div>
+                                <select class="form-control" name="loai" id="type">
+                                    <option selected disabled>Select brand</option>
+                                    <option>Apple</option>
+                                    <option>SamSung</option>
+                                </select>
+                            </div>
+                            <span class="sp-thongbao" id="TBtybe"></span>
+                        </div>
+
+                    </form>
+                </div>
+                <!-- modal footer  -->
+                <div class="modal-footer" id="modalFooter">
+                    <button type="button" class="btn btnAdd" id="btnAddPhone">Add Phone</button>
+                    <button type="button" class="btn btnUp" id="btnUpdate">Update Phone</button>
+                    <button type="button" class="btn btnClose" id="btnClose" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
 
 
 
