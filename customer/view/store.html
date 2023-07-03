@@ -1,12 +1,350 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <title>Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css"
+        integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" />
+    <link rel="stylesheet" href="./css/store.css">
 </head>
+
 <body>
-    
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top mb-5">
+            <div class="container">
+                <a class="navbar-brand me-5" href="#">
+                    <i class="fa-lg fa-solid fa-robot me-3"></i>
+                    Cyber Phone
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                    aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto nav1">
+                        <li class="nav-item text-center mx-5">
+                            <a class="nav-link active" href="../../index.html" role="button" aria-haspopup="true"
+                                aria-expanded="false">
+                                <div>
+                                    <i class="fas fa-home fa-xl mb-1"></i>
+                                </div>
+                                Home
+                            </a>
+                        </li>
+
+                        <li class="nav-item text-center">
+                            <a class="nav-link active" href="../../admin/view/admin.html" role="button"
+                                aria-haspopup="true" aria-expanded="false">
+                                <div>
+                                    <i class="fa-solid fa-xl fa-user-gear"></i>
+                                </div>
+                                Admin Portal
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav me-auto nav2">
+                        <li class="nav-item text-center">
+                            <a class="nav-link js-toggle-cart active" role="button" aria-haspopup="true"
+                                aria-expanded="false">
+                                <div>
+                                    <i class="fa-solid fa-xl fa-shopping-cart"></i>
+                                    <span class="badge rounded-pill badge-notification bg-light text-dark"
+                                        id="cartCount">0</span>
+                                </div>
+                                Cart
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="banner-image">
+        <div class="container py-5">
+            <div class="row py-5 align-items-center">
+                <div class="col-lg-6">
+                    <h5 class="display-4 my-4 font-weight-bold text-white">Galaxy S22｜S22+</h5>
+                    <div class="d-flex star-rating mb-5">
+                        <a href=""><i class="lni lni-star-filled"></i></a>
+                        <a href=""><i class="lni lni-star-filled"></i></a>
+                        <a href=""><i class="lni lni-star-filled"></i></a>
+                        <a href=""><i class="lni lni-star"></i></a>
+                        <a href=""><i class="lni lni-star"></i></a>
+                    </div>
+                    <p class="h5 aa mb-4 pb-3 text-white-50">
+                        Get select Galaxy Buds2 or Buds Live on us with Galaxy S22+. Plus, get up to
+                        $700 enhanced trade-in credit. For a limited time. Get hands on with the S22
+                        and S22+. See in AR &gt;&gt;
+                    </p>
+                    <h3 class="text-white mb-5">1325$</h3>
+                    <div class="d-flex">
+                        <a href="#" class="btn btn-lg red-btn"><i class="lni lni-play-store me-2"></i> Find out
+                            more!</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-lg-right text-center mt-5 mt-lg-0">
+                    <div class="banner-phone-image">
+                        <img src="../view/img/s22.png" alt="phone-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="content-wrap">
+        <main role="main" class="pb-5 mb-5">
+            <div class="container">
+                <div class="my-5">
+                    <div class="container">
+                        <select class="form-select w-25 mb-5" id="selectList" aria-label="Default select example">
+                            <option value="all">All Brands</option>
+                            <option value="Apple">Apple</option>
+                            <option value="Samsung">Samsung</option>
+                        </select>
+                    </div>
+                    <div class="row mx-0 gy-4" id="phoneList">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="card text-black h-100">
+                                <div class="content-overlay"></div>
+                                <img src="data:image/webp;base64,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"
+                                    class="card-img" alt="Phone Image">
+                                <div class="content-details fadeIn-top">
+                                    <h3 class="pb-5">Specifications</h3>
+                                    <div class="d-flex justify-content-start py-1">
+                                        <span class="text-light"><b>Screen:</b></span>
+                                        <span class="text-light">&nbsp; nguyenanh1904.vn@gmail.com</span>
+                                    </div>
+                                    <div class="d-flex justify-content-start py-1">
+                                        <span class="text-light"><b>Back Camera:</b> 23</span>
+                                    </div>
+                                    <div class="d-flex justify-content-start py-1">
+                                        <span class="text-light"><b>Front Camera:</b> 12</span>
+                                    </div>
+
+                                    <p class="pt-5"><u>click here for more details</u></p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h5 class="card-title pt-3">Nguyễn Anh</h5>
+                                        <span class="text-muted mb-2">$2333</span>
+                                        <span class="text-danger"><s>$2633</s></span>
+                                    </div>
+                                    <div class="mt-3 brand-box text-center">
+                                        <span>Apple</span>
+                                    </div>
+                                    <div class="d-flex justify-content-start pt-3">
+                                        <span><b>Description:</b> Nguyễn Anh</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between pt-3">
+                                        <div class="text-warning">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </div>
+                                        <span class="text-success"><b>In Stock</b></span>
+                                    </div>
+                                    <button type="button" class="btn btn-block w-50" onclick="btnAddToCart('1')">Add to
+                                        cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div class="meh">
+        <div class="cart is-hidden">
+            <div class="cart__overlay"></div>
+            <div class="cart__contents">
+                <div class="cart__products">
+                    <h2>Shopping Cart</h2>
+                    <p class="microcopy">An overview of your selected products.</p>
+                    <div class="products" id="cartList"></div>
+                </div>
+                <div class="cart__totals">
+                    <table class="totals">
+                        <tbody>
+                            <tr>
+                                <th class="align-left font-normal tertiary">Subtotal</th>
+                                <td class="align-right" id="subTotal">$0</td>
+                            </tr>
+                            <tr>
+                                <th class="align-left font-normal tertiary">
+                                    Shipping <small>(estimated)</small>
+                                </th>
+                                <td class="align-right" id="shipping">$0</td>
+                            </tr>
+                            <tr>
+                                <th class="align-left font-normal tertiary">
+                                    Tax <small>(estimated)</small>
+                                </th>
+                                <td class="align-right" id="tax">$0</td>
+                            </tr>
+                            <tr>
+                                <th class="align-left">Total</th>
+                                <td class="align-right" id="priceTotal">$0</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2" class="tertiary">
+                                    <small>Estimations based on New York, United States</small>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div class="form__footer">
+                        <button class="btn first js-toggle-cart">Continue Shopping</button>
+                        <button class="btn yellow-btn" onclick="payNow()">Pay Now</button>
+                        <button class="btn me-5 ms-0 px-4 red-btn" onclick="emptyCart()" id="emptyCart">
+                            <i class="fa-solid fa-trash me-2"></i> Empty Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="text-center text-lg-start bg-dark text-light gradient-custom">
+        <!-- Section: Social media -->
+        <section class="d-flex justify-content-center p-4 border-bottom">
+            <!-- Left -->
+            <div class="me-5 d-none d-lg-block">
+                <span>Get connected with us on social networks:</span>
+            </div>
+            <!-- Left -->
+            <!-- Right -->
+            <div>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="me-4 text-reset">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <!-- Right -->
+        </section>
+        <!-- Section: Social media -->
+        <!-- Section: Links  -->
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <!-- Content -->
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fa-lg fa-solid fa-robot me-3"></i>Cyber Phone
+                        </h6>
+                        <p>
+                            We pride ourselves on our efficiency and hard work, but most of all our
+                            ability to source you the best quality and best value products and devices
+                            in the market.
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Brands</h6>
+                        <p>
+                            <a href="#!" class="text-reset">iPhone</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Sumsung</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Xiaomi</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Oppo</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
+                        <p>
+                            <a href="#!" class="text-reset">Pricing</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Settings</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Orders</a>
+                        </p>
+                        <p>
+                            <a href="#!" class="text-reset">Help</a>
+                        </p>
+                    </div>
+                    <!-- Grid column -->
+                    <!-- Grid column -->
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <!-- Links -->
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        <p><i class="fas fa-home me-3"></i> Da Nang, Thanh Khe, VN</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            cyberphone@mail.com
+                        </p>
+                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </div>
+        </section>
+        <!-- Section: Links  -->
+        <!-- Copyright -->
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05)">
+            © 2022 Copyright:
+            <a class="text-reset fw-bold" href="">Cyber Phone</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js"
+        integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        // toggle shopping cart
+        $('.js-toggle-cart, .cart__overlay').on('click', function () {
+            $('.cart').toggleClass('is-hidden');
+        });
+        // change nav bar color when scroll
+        $(window).on('scroll', function () {
+            if (this.scrollY > 100) {
+                $('nav').addClass('black');
+            } else {
+                $('nav').removeClass('black');
+            }
+        });
+    </script>
 </body>
+
 </html>
