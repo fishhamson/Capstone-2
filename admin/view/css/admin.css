@@ -38,4 +38,62 @@ header {
 
 #navbarPhone .nav-link div i {
   padding-left: 0.4rem;
+}
+
+.management__item {
+  background-color: rgba(29, 38, 113, 0.7);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  align-items: center;
+}
+
+.management__left {
+  color: white;
+}
+
+.management__right .btn {
+  border: 0;
+  color: rgba(255, 255, 255, 0.85);
+  background-color: #294d5c;
+  transition: all 0.15s;
+}
+
+.management__right .btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.management__right .btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.management__table .table thead th {
+  border-bottom: 2px solid #000000;
+}
+
+.footer__iphone {
+  background: linear-gradient(rgba(29, 38, 113, 0.8), rgba(195, 55, 100, 0.8));
+  color: white;
+}
+
+.footer__right i {
+  color: white;
+}
+
+.footer__top {
+  border-bottom: 1px solid white;
+}
+
+.footer__bottom p a {
+  color: white;
+}
+
+.footer__end {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.footer__end a {
+  font-weight: bold;
+  color: white;
 }/*# sourceMappingURL=admin.css.map */
