@@ -18,12 +18,12 @@ promise
         <image src=${prd.image} style ='width:50px; height:50px' />
         </td>
         <td><div style="max-width:200px">${prd.desc}</div></td> 
-            </tr>
+           
         <td>
         <button class="btn btn-warning text-white">Edit <i class="fa fa-pencil-square ms-2"></i></button>
         <button class="btn btn-danger">Delete <i class="fa fa-trash ms-2"></i></button>
         </td>    
-            
+        </tr>
             `
         }
         document.getElementById('myTablePhone').innerHTML = htmlContent
