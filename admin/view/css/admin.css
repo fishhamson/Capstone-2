@@ -96,4 +96,10 @@ header {
 .footer__end a {
   font-weight: bold;
   color: white;
+}
+
+.sp-thongbao {
+  color: red;
+  margin-left: 2px;
+  display: none;
 }/*# sourceMappingURL=admin.css.map */
