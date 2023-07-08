@@ -85,6 +85,8 @@ function getThongTinSanPham() {
 getElement('#btnAddPhone').onclick = function () {
     //Lấy thông tin product
     var product = getThongTinSanPham()
+    if(!product)
+        return 
     // call API tạo product
     var promise = axios({
         url: "https://64a3f42bc3b509573b56d12f.mockapi.io/products",
