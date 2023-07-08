@@ -1,5 +1,5 @@
 // AXIOS
-function danhSachSanPham(){
+function danhSachSanPham() {
     var promise = axios({
         url: "https://64a3f42bc3b509573b56d12f.mockapi.io/products",
         method: "GET",
@@ -36,53 +36,53 @@ function danhSachSanPham(){
         .catch(function (err) {
             console.log(err);
         });
-    
+
 }
 danhSachSanPham()
 //ham get element
- function getElement(element){
+function getElement(element) {
     return document.querySelector(element)
- }   
+}
 
- function getThongTinSanPham(){
+function getThongTinSanPham() {
     //lay thong tin từ user
     var name = getElement('#name').value
     var price = getElement('#price').value
-    var screen = getElement('#screen').value   
-    var backCamera = getElement('#backCamera').value  
+    var screen = getElement('#screen').value
+    var backCamera = getElement('#backCamera').value
     var frontCamera = getElement('#frontCamera').value
     var image = getElement('#img').value
     var desc = getElement('#description').value
     var type = getElement('#type').value
- // tạo đối tượng san phẩm từ lớp đối tương
- var product = new SanPham(name, price, screen, backCamera, frontCamera, image, desc, type)
-//---validation
-//name
-var isValid = true
-isValid &= kiemTraChuoi(product.name, 1, undefined, '#TBname', '*Tên không được để trống*');
-//price
-var isValid = true
-isValid &= kiemTraChuoi(product.price, 1, undefined, '#TBprice', '*Không được để trống*')
-&&
-kiemTraSo(product.price, '#TBprice', /^[0-9]+$/, 'Price phải là số' );
-//screen
-isValid &= kiemTraChuoi(product.screen, 1, undefined, '#TBscreen', '*Không được để trống*');
-//backCamera
-isValid &= kiemTraChuoi(product.backCamera, 1, undefined, '#TBbackCamera', '*Không được để trống*');
-//frontCamera
-isValid &= kiemTraChuoi(product.frontCamera, 1, undefined, '#TBfrontCamera', '*Không được để trống*');
-//image
-isValid &= kiemTraChuoi(product.image, 1, undefined, '#TBimg', '*Không được để trống*');
-//desc
-isValid &= kiemTraChuoi(product.desc, 1, undefined, '#TBdescription', '*Không được để trống*');
-//type
-isValid &= kiemTraLuaChon(product.type, '#TBtybe', '*Vui lòng chọn sản phẩm*');
+    // tạo đối tượng san phẩm từ lớp đối tương
+    var product = new SanPham(name, price, screen, backCamera, frontCamera, image, desc, type)
+    //---validation
+    //name
+    var isValid = true
+    isValid &= kiemTraChuoi(product.name, 1, undefined, '#TBname', '*Tên không được để trống*');
+    //price
+    var isValid = true
+    isValid &= kiemTraChuoi(product.price, 1, undefined, '#TBprice', '*Không được để trống*')
+        &&
+        kiemTraSo(product.price, '#TBprice', /^[0-9]+$/, 'Price phải là số');
+    //screen
+    isValid &= kiemTraChuoi(product.screen, 1, undefined, '#TBscreen', '*Không được để trống*');
+    //backCamera
+    isValid &= kiemTraChuoi(product.backCamera, 1, undefined, '#TBbackCamera', '*Không được để trống*');
+    //frontCamera
+    isValid &= kiemTraChuoi(product.frontCamera, 1, undefined, '#TBfrontCamera', '*Không được để trống*');
+    //image
+    isValid &= kiemTraChuoi(product.image, 1, undefined, '#TBimg', '*Không được để trống*');
+    //desc
+    isValid &= kiemTraChuoi(product.desc, 1, undefined, '#TBdescription', '*Không được để trống*');
+    //type
+    isValid &= kiemTraLuaChon(product.type, '#TBtybe', '*Vui lòng chọn sản phẩm*');
 
- return isValid ? product : undefined;
- }
+    return isValid ? product : undefined;
+}
 
- // thêm sản phẩm
- getElement('#btnAddPhone').onclick = function(){
+// thêm sản phẩm
+getElement('#btnAddPhone').onclick = function () {
     //Lấy thông tin product
     var product = getThongTinSanPham()
     // call API tạo product
@@ -91,45 +91,45 @@ isValid &= kiemTraLuaChon(product.type, '#TBtybe', '*Vui lòng chọn sản ph�
         method: "POST",
         data: product,
     })
-    
-promise
-//tạo thành công
-.then(function(){
-    //dom tới btn clone đóng modal
-    document.querySelector('.btn-close').click()
-    //get lại danh sách prd sau khi tạo thành công
-    danhSachSanPham()
-    //return ve promise.Reject hoặc throw Error => nhảy xuống catch
-})
-// tạo thất bại
-.catch(function(){
-    alert('tạo sản phẩm thất bại')
-})
- }
+
+    promise
+        //tạo thành công
+        .then(function () {
+            //dom tới btn clone đóng modal
+            document.querySelector('.btn-close').click()
+            //get lại danh sách prd sau khi tạo thành công
+            danhSachSanPham()
+            //return ve promise.Reject hoặc throw Error => nhảy xuống catch
+        })
+        // tạo thất bại
+        .catch(function () {
+            alert('tạo sản phẩm thất bại')
+        })
+}
 // xóa sản phẩm
- function deleteProduct(idProduct){
+function deleteProduct(idProduct) {
     var promise = axios({
         url: `https://64a3f42bc3b509573b56d12f.mockapi.io/products/${idProduct}`,
         method: 'DELETE',
     })
     promise
-    // xóa thành công
-    .then(function(){
-        danhSachSanPham()
-    })
-    //xóa sản phẩm thất bại
-    .catch(function(){
-        alert('xóa sản phẩm thất bại')
-    }) 
- }
- //update sản phẩm
- var idProductUpdate = ''
- function updateProduct(idProduct){
+        // xóa thành công
+        .then(function () {
+            danhSachSanPham()
+        })
+        //xóa sản phẩm thất bại
+        .catch(function () {
+            alert('xóa sản phẩm thất bại')
+        })
+}
+//update sản phẩm
+var idProductUpdate = ''
+function updateProduct(idProduct) {
     var promise = axios({
         url: `https://64a3f42bc3b509573b56d12f.mockapi.io/products/${idProduct}`,
         method: 'GET',
     })
-    promise.then(function(result){
+    promise.then(function (result) {
         var prd = result.data
         idProductUpdate = prd.id
         //dom và show UI
@@ -138,9 +138,9 @@ promise
         getElement('#img').value = prd.image
         getElement('#description').value = prd.desc
     })
- }
+}
 
-getElement('#btnUpdate').onclick = function(){
+getElement('#btnUpdate').onclick = function () {
     //lấy thông tin sau edit
     var productEdit = getThongTinSanPham()
     var promise = axios({
@@ -148,7 +148,7 @@ getElement('#btnUpdate').onclick = function(){
         method: 'PUT',
         data: productEdit,
     })
-    promise.then(function(){
+    promise.then(function () {
         getElement('.btn-close').click()
         danhSachSanPham()
     })
