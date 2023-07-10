@@ -155,3 +155,51 @@ getElement('#btnUpdate').onclick = function () {
         danhSachSanPham()
     })
 }
+
+
+
+getElement('#iphoneSearch').addEventListener('keyup', function(){
+var valueSearch = getElement('#iphoneSearch').value.toLowerCase()
+console.log(valueSearch);
+// var arrKHSearch = []
+// for(var i = 0; i < abc.length; i++){
+//     tenKH = product[i].name.toLowerCase()
+//     if(tenKH.indexOf(valueSearch) !== -1){
+//         arrKHSearch.push(product[i])
+// }
+// }
+
+// danhSachSanPham(arrKHSearch)
+})
+function timKiemSanPham(keyword){
+    var keyword = document.getElementById("iphoneSearch").value.toLowerCase();
+    var promise = axios({
+        url: "https://64a3f42bc3b509573b56d12f.mockapi.io/products?name=" + keyword ,
+        method: 'GET',
+    })
+    promise
+    .then(function(response){
+        var products = response.data;
+        displaySearchResults(products);
+    })
+    .catch(function (error) {
+        // console.log(error);
+        danhSachSanPham(error)
+      });
+}
+function displaySearchResults(product){
+    var searchResultsContainer = document.getElementById("myTablePhone");
+    searchResultsContainer.innerHTML = "";
+    if (products.length === 0) {
+        // Không tìm thấy sản phẩm
+        searchResultsContainer.textContent = "Không tìm thấy sản phẩm.";
+    } else {
+        // Hiển thị kết quả tìm kiếm
+        for (var i = 0; i < products.length; i++) {
+            var product = products[i];
+            var productElement = document.createElement("div");
+            productElement.textContent = product.name;
+            searchResultsContainer.appendChild(productElement);
+        }
+    }
+}

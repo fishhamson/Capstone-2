@@ -31,28 +31,29 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarPhone">
                 <div class="navbar-nav">
-                    <a class="nav-link " href="./../../index.html">
+                    <a class="nav-link header__home" href="./../../index.html">
                         <div>
                             <i class="fas fa-home fa-xl mb-1"></i>
                         </div>
                         Home
                     </a>
-                    <a class="nav-link" href="./../../customer/view/store.html">
+                    <a class="nav-link header__store" href="./../../customer/view/store.html">
                         <div>
                             <i class="fa-solid fa-xl fa-store"></i>
                         </div>
                         Store
                     </a>
                     <a class="nav-link" href="#">
-                        <div>
-                            <i class="fa-solid fa-xl fa-shopping-cart"></i>
-                        </div>
-                        Cart
+                        <form class="form-inline">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                                id="iphoneSearch">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
                     </a>
                 </div>
-                <div class="header__right navbar-nav">
+                <!-- <div class="header__right navbar-nav"> -->
 
-                </div>
+            </div>
             </div>
         </nav>
     </header>
@@ -267,7 +268,8 @@
                 <div class="modal-footer" id="modalFooter">
                     <button type="button" class="btn btnAdd" id="btnAddPhone">Add Phone</button>
                     <button type="button" class="btn btnUp" id="btnUpdate">Update Phone</button>
-                    <button type="button" class="btn btn-close" id="btnDong" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-close" id="btnDong" data-dismiss="modal"
+                        style="background-color: aqua; color: white;">Close</button>
                 </div>
             </div>
 

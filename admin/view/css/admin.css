@@ -23,12 +23,14 @@ header {
   width: 70%;
 }
 
-.header__iphone .navbar-expand-lg .navbar-nav .nav-link:nth-of-type(1) {
-  margin: 0 3rem;
+.header__home,
+.header__store {
+  margin: 15px;
 }
 
 .header__iphone .navbar-expand-lg .navbar-nav .nav-link:nth-of-type(3) {
-  margin-left: 48rem;
+  margin-left: 33rem;
+  padding-top: 12px;
 }
 
 .header__bg .navbar-nav .nav-link,
@@ -38,6 +40,11 @@ header {
 
 #navbarPhone .nav-link div i {
   padding-left: 0.4rem;
+}
+
+.header__iphone .form-inline {
+  background-image: none;
+  box-shadow: none;
 }
 
 .management__item {
