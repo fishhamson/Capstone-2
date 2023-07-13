@@ -85,8 +85,8 @@ function getThongTinSanPham() {
 getElement('#btnAddPhone').onclick = function () {
     //Lấy thông tin product
     var product = getThongTinSanPham()
-    if(!product)
-        return 
+    if (!product)
+        return
     // call API tạo product
     var promise = axios({
         url: "https://64a3f42bc3b509573b56d12f.mockapi.io/products",
@@ -158,36 +158,36 @@ getElement('#btnUpdate').onclick = function () {
 
 
 
-getElement('#iphoneSearch').addEventListener('keyup', function(){
-var valueSearch = getElement('#iphoneSearch').value.toLowerCase()
-console.log(valueSearch);
-// var arrKHSearch = []
-// for(var i = 0; i < abc.length; i++){
-//     tenKH = product[i].name.toLowerCase()
-//     if(tenKH.indexOf(valueSearch) !== -1){
-//         arrKHSearch.push(product[i])
-// }
-// }
+getElement('#iphoneSearch').addEventListener('keyup', function () {
+    var valueSearch = getElement('#iphoneSearch').value.toLowerCase()
+    console.log(valueSearch);
+    // var arrKHSearch = []
+    // for(var i = 0; i < abc.length; i++){
+    //     tenKH = product[i].name.toLowerCase()
+    //     if(tenKH.indexOf(valueSearch) !== -1){
+    //         arrKHSearch.push(product[i])
+    // }
+    // }
 
-// danhSachSanPham(arrKHSearch)
+    // danhSachSanPham(arrKHSearch)
 })
-function timKiemSanPham(keyword){
+function timKiemSanPham(keyword) {
     var keyword = document.getElementById("iphoneSearch").value.toLowerCase();
     var promise = axios({
-        url: "https://64a3f42bc3b509573b56d12f.mockapi.io/products?name=" + keyword ,
+        url: "https://64a3f42bc3b509573b56d12f.mockapi.io/products?name=" + keyword,
         method: 'GET',
     })
     promise
-    .then(function(response){
-        var products = response.data;
-        displaySearchResults(products);
-    })
-    .catch(function (error) {
-        // console.log(error);
-        danhSachSanPham(error)
-      });
+        .then(function (response) {
+            var products = response.data;
+            displaySearchResults(products);
+        })
+        .catch(function (error) {
+            // console.log(error);
+            danhSachSanPham(error)
+        });
 }
-function displaySearchResults(product){
+function displaySearchResults(product) {
     var searchResultsContainer = document.getElementById("myTablePhone");
     searchResultsContainer.innerHTML = "";
     if (products.length === 0) {
@@ -203,3 +203,22 @@ function displaySearchResults(product){
         }
     }
 }
+
+let tmp = true
+
+getElement("#CPrice").addEventListener("click", () => {
+    let table = document.getElementById("myTable")
+    let rows = Array.from(table.rows).slice(1)
+    if (tmp) {
+        getElement('#PUp').style.display = "inline-block"
+        getElement('#PDown').style.display = "none"
+        rows.sort((a, b) => a.cells[2].textContent - b.cells[2].textContent);
+    } else {
+        getElement('#PUp').style.display = "none"
+        getElement('#PDown').style.display = "inline-block"
+        rows.sort((a, b) => b.cells[2].textContent - a.cells[2].textContent);
+    }
+
+    tmp = !tmp
+    rows.forEach(row => table.appendChild(row))
+})

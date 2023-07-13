@@ -109,4 +109,8 @@ header {
   color: red;
   margin-left: 2px;
   display: none;
+}
+
+#CPrice {
+  cursor: pointer;
 }/*# sourceMappingURL=admin.css.map */
