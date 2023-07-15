@@ -46,8 +46,8 @@
                     <a class="nav-link" href="#">
                         <form class="form-inline">
                             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
-                                id="iphoneSearch">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                                id="iphoneSearch" oninput="searchProducts()">
+                            <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
                         </form>
                     </a>
                 </div>
@@ -182,7 +182,7 @@
                     <h2 id="header-title text-center">Phone Management</h2>
                 </div>
                 <div class="modal-body">
-                    <form role="form">
+                    <form role="form" id="iphoneForm">
                         <div class="form-group">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -199,7 +199,8 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa-regular fa-dollar-sign"></i></span>
                                 </div>
-                                <input type="text" id="price" class="form-control input-sm" placeholder="Price">
+                                <input type="text" id="price" class="form-control input-sm" placeholder="Price"
+                                    name="price">
                             </div>
                             <span class="sp-thongbao" id="TBprice"></span>
                         </div>
@@ -209,7 +210,8 @@
                                     <span class="input-group-text"><i
                                             class="fa-solid fa-mobile-screen-button"></i></span>
                                 </div>
-                                <input type="text" id="screen" class="form-control input-sm" placeholder="Screen">
+                                <input type="text" id="screen" class="form-control input-sm" placeholder="Screen"
+                                    name="screen">
                             </div>
                             <span class="sp-thongbao" id="TBscreen"></span>
                         </div>
@@ -219,7 +221,7 @@
                                     <span class="input-group-text"><i class="fa-solid fa-camera"></i></span>
                                 </div>
                                 <input type="text" id="backCamera" class="form-control input-sm"
-                                    placeholder="Back Camera">
+                                    placeholder="Back Camera" name="backCamera">
                             </div>
                             <span class="sp-thongbao" id="TBbackCamera"></span>
                         </div>
@@ -229,7 +231,7 @@
                                     <span class="input-group-text"><i class="fa-solid fa-camera"></i></span>
                                 </div>
                                 <input type="text" id="frontCamera" class="form-control input-sm"
-                                    placeholder="Front Camera">
+                                    placeholder="Front Camera" name="frontCamera">
                             </div>
                             <span class="sp-thongbao" id="TBfrontCamera"></span>
                         </div>
@@ -238,7 +240,8 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa-solid fa-link"></i></span>
                                 </div>
-                                <input type="text" id="img" class="form-control input-sm" placeholder="Image link">
+                                <input type="text" id="img" class="form-control input-sm" placeholder="Image link"
+                                    name="image">
                             </div>
                             <span class="sp-thongbao" id="TBimg"></span>
                         </div>
@@ -247,7 +250,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa-solid fa-comment"></i></span>
                                 </div>
-                                <input type="text" name="name" id="description" class="form-control input-sm"
+                                <input type="text" name="desc" id="description" class="form-control input-sm"
                                     placeholder="Description">
                             </div>
                             <span class="sp-thongbao" id="TBdescription"></span>
@@ -257,7 +260,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa-solid fa-signature"></i></span>
                                 </div>
-                                <select class="form-control" name="loai" id="type">
+                                <select class="form-control" name="type" id="type">
                                     <option selected disabled>Select brand</option>
                                     <option>Apple</option>
                                     <option>SamSung</option>

@@ -1,48 +1,69 @@
-// AXIOS
-function danhSachSanPham() {
-    var promise = axios({
-        url: "https://64a3f42bc3b509573b56d12f.mockapi.io/products",
-        method: "GET",
-    })
-    promise
-        .then(function (result) {
-            // console.log('result',result.data)
-            var htmlContent = "";
-            for (var i = 0; i < result.data.length; i++) {
-                var prd = result.data[i];
-                htmlContent += `
-                <tr>
-            <td><div style="max-width:10px">${i + 1}</div></td>
-            <td><div style="max-width:50px">${prd.name}</div></td>
-            <td>${prd.price}</td>
-            <td>
-            <image src=${prd.image} style ='width:50px; height:50px' />
-            </td>
-            <td><div style="max-width:200px">${prd.desc}</div></td> 
-               
-            <td>
-            <button
-             class="btn btn-warning text-white" data-toggle="modal" data-target="#myModal"
-            onclick="updateProduct(${prd.id})">Edit<i class="fa fa-pencil-square ms-2"></i>
-            </button>
-            <button class="btn btn-danger"
-            onclick="deleteProduct(${prd.id})">Delete<i class="fa fa-trash ms-2"></i></button>
-            </td>    
-            </tr>
-                `
-            }
-            document.getElementById('myTablePhone').innerHTML = htmlContent
-        })
-        .catch(function (err) {
-            console.log(err);
-        });
-
-}
-danhSachSanPham()
 //ham get element
 function getElement(element) {
-    return document.querySelector(element)
-}
+    return document.querySelector(element);
+  }
+// AXIOS
+
+function getIphoneList() {
+    var promise = axios({
+      url: "https://64a3f42bc3b509573b56d12f.mockapi.io/products",
+      method: "GET",
+    });
+    promise
+      .then((result) => {
+        renderIphone(result.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });}
+
+      getIphoneList();
+      const renderIphone = (arrIphone) => {
+        let htmlContent = "";
+        for (var i = 0; i < arrIphone.length; i++) {
+          var prd = arrIphone[i];
+          htmlContent += `
+                  <tr>
+              <td><div style="max-width:10px">${i + 1}</div></td>
+              <td><div style="max-width:50px">${prd.name}</div></td>
+              <td>${prd.price}</td>
+              <td>
+              <image src=${prd.image} style ='width:50px; height:50px' />
+              </td>
+              <td><div style="max-width:200px">${prd.desc}</div></td> 
+                 
+              <td>
+              <button
+               class="btn btn-warning text-white" data-toggle="modal" data-target="#myModal"
+              onclick="updateProduct(${
+                prd.id
+              })">Edit<i class="fa fa-pencil-square ms-2"></i>
+              </button>
+              <button class="btn btn-danger"
+              onclick="deleteProduct(${
+                prd.id
+              })">Delete<i class="fa fa-trash ms-2"></i></button>
+              </td>    
+              </tr>
+                  `;
+        }
+      
+        document.getElementById("myTablePhone").innerHTML = htmlContent;
+       
+      };
+// const layThongTinSanPham = () =>{
+//   const element = document.querySelectorAll('#iphoneForm input, #iphoneForm select')
+//   let iphone = {}
+//   element.forEach((ele)=>{
+//     const { name, value } = ele
+//     iphone[name] = value
+//   })
+//   const {name, price, screen, backCamera, frontCamera, image, desc, type} = iphone
+//   let product = {}
+//   return new SanPham(name, price, screen, backCamera, frontCamera, image, desc, type) = product
+// }
+
+
 
 function getThongTinSanPham() {
     //lay thong tin từ user
@@ -56,6 +77,7 @@ function getThongTinSanPham() {
     var type = getElement('#type').value
     // tạo đối tượng san phẩm từ lớp đối tương
     var product = new SanPham(name, price, screen, backCamera, frontCamera, image, desc, type)
+ 
     //---validation
     //name
     var isValid = true
@@ -81,33 +103,39 @@ function getThongTinSanPham() {
     return isValid ? product : undefined;
 }
 
-// thêm sản phẩm
-getElement('#btnAddPhone').onclick = function () {
+
+
+//ẩn btn cập nhật
+getElement("#btnThem").onclick = () => {
+    getElement("#btnUpdate").style.display = "none";
+    // show lại btn thêm món ăn
+    getElement("#btnAddPhone").style.display = "inline-block";
+  };
+  //call api thêm sản phẩm
+  getElement("#btnAddPhone").onclick = () => {
     //Lấy thông tin product
-    var product = getThongTinSanPham()
-    if (!product)
-        return
+    const product = getThongTinSanPham();
+    if (!product) return;
     // call API tạo product
     var promise = axios({
-        url: "https://64a3f42bc3b509573b56d12f.mockapi.io/products",
-        method: "POST",
-        data: product,
-    })
-
+      url: "https://64a3f42bc3b509573b56d12f.mockapi.io/products",
+      method: "POST",
+      data: product,
+    });
     promise
-        //tạo thành công
-        .then(function () {
-            //dom tới btn clone đóng modal
-            document.querySelector('.btn-close').click()
-            //get lại danh sách prd sau khi tạo thành công
-            danhSachSanPham()
-            //return ve promise.Reject hoặc throw Error => nhảy xuống catch
-        })
-        // tạo thất bại
-        .catch(function () {
-            alert('tạo sản phẩm thất bại')
-        })
-}
+    //tạo thành công
+    .then(function () {
+      //dom tới btn clone đóng modal
+      document.querySelector(".btn-close").click();
+      //get lại danh sách prd sau khi tạo thành công
+      getIphoneList();
+      //return ve promise.Reject hoặc throw Error => nhảy xuống catch
+    })
+    // tạo thất bại
+    .catch(function () {
+      alert("tạo sản phẩm thất bại");
+    });
+};
 // xóa sản phẩm
 function deleteProduct(idProduct) {
     var promise = axios({
@@ -117,18 +145,22 @@ function deleteProduct(idProduct) {
     promise
         // xóa thành công
         .then(function () {
-            danhSachSanPham()
+            getIphoneList();
         })
         //xóa sản phẩm thất bại
         .catch(function () {
             alert('xóa sản phẩm thất bại')
         })
 }
-//update sản phẩm
+
 var idProductUpdate = ''
-function updateProduct(idProduct) {
+function updateProduct(id) {
+  // ẩn btn thêm móm
+getElement('#btnAddPhone').style.display = 'none'
+// show lại btn cập nhật
+getElement('#btnUpdate').style.display = 'inline-block'
     var promise = axios({
-        url: `https://64a3f42bc3b509573b56d12f.mockapi.io/products/${idProduct}`,
+        url: `https://64a3f42bc3b509573b56d12f.mockapi.io/products/${id}`,
         method: 'GET',
     })
     promise.then(function (result) {
@@ -137,8 +169,12 @@ function updateProduct(idProduct) {
         //dom và show UI
         getElement('#name').value = prd.name
         getElement('#price').value = prd.price
+        getElement('#screen').value = prd.screen
+        getElement('#backCamera').value = prd.backCamera
+        getElement('#frontCamera').value = prd.frontCamera
         getElement('#img').value = prd.image
         getElement('#description').value = prd.desc
+        getElement('#type').value = prd.type
     })
 }
 
@@ -152,56 +188,8 @@ getElement('#btnUpdate').onclick = function () {
     })
     promise.then(function () {
         getElement('.btn-close').click()
-        danhSachSanPham()
+        getIphoneList();
     })
-}
-
-
-
-getElement('#iphoneSearch').addEventListener('keyup', function () {
-    var valueSearch = getElement('#iphoneSearch').value.toLowerCase()
-    console.log(valueSearch);
-    // var arrKHSearch = []
-    // for(var i = 0; i < abc.length; i++){
-    //     tenKH = product[i].name.toLowerCase()
-    //     if(tenKH.indexOf(valueSearch) !== -1){
-    //         arrKHSearch.push(product[i])
-    // }
-    // }
-
-    // danhSachSanPham(arrKHSearch)
-})
-function timKiemSanPham(keyword) {
-    var keyword = document.getElementById("iphoneSearch").value.toLowerCase();
-    var promise = axios({
-        url: "https://64a3f42bc3b509573b56d12f.mockapi.io/products?name=" + keyword,
-        method: 'GET',
-    })
-    promise
-        .then(function (response) {
-            var products = response.data;
-            displaySearchResults(products);
-        })
-        .catch(function (error) {
-            // console.log(error);
-            danhSachSanPham(error)
-        });
-}
-function displaySearchResults(product) {
-    var searchResultsContainer = document.getElementById("myTablePhone");
-    searchResultsContainer.innerHTML = "";
-    if (products.length === 0) {
-        // Không tìm thấy sản phẩm
-        searchResultsContainer.textContent = "Không tìm thấy sản phẩm.";
-    } else {
-        // Hiển thị kết quả tìm kiếm
-        for (var i = 0; i < products.length; i++) {
-            var product = products[i];
-            var productElement = document.createElement("div");
-            productElement.textContent = product.name;
-            searchResultsContainer.appendChild(productElement);
-        }
-    }
 }
 
 let tmp = true
@@ -222,3 +210,39 @@ getElement("#CPrice").addEventListener("click", () => {
     tmp = !tmp
     rows.forEach(row => table.appendChild(row))
 })
+
+
+
+// tìm kiếm sản phẩm
+const searchProducts = ()=>{
+    let input = getElement('#iphoneSearch').value.toLowerCase();
+    let table = getElement('#myTable');
+    let tr = table.getElementsByTagName("tr");
+  
+    if(input === ''){
+      for(let i = 0; i < tr.length; i++){
+        tr[i].style.display = '';
+      }
+      return
+    }
+    for(let i=0; i<tr.length; i++){
+      let td = tr[i].getElementsByTagName('td')[1]
+      if(td){
+        let txtValue = td.textContent || td.innerText
+        if(txtValue.toLowerCase().indexOf(input)>-1){
+          tr[i].style.display = '';
+        }else{
+          tr[i].style.display ='none';
+        }
+      }
+    }
+  }
+  
+  getElement('#btn-search').onclick = ()=>{
+    searchProducts();
+  }
+
+
+
+
+
