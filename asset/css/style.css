@@ -152,4 +152,8 @@ h1 {
   height: 3px;
   background-color: #f3ce5e;
   transition: width 0.25s ease-out;
+}
+
+.container {
+  margin-top: 200px;
 }/*# sourceMappingURL=style.css.map */
