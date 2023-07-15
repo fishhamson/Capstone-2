@@ -16,7 +16,7 @@ export class Product {
     this.screen = _screen;
     this.backCamera = _backCamera;
     this.frontCamera = _frontCamera;
-    this.img = _img;
+    this.image = _img;
     this.desc = _desc;
     this.type = _type;
   }

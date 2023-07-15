@@ -67,8 +67,7 @@ const renderCart = (cart) => {
         content += `<div class="product">
     <div class="product__1">
       <div class="product__thumbnail">
-        <img src=${ele.product.image} 
-          alt="Italian Trulli">
+        <img src=${ele.product.image}>
       </div>
       <div class="product__details">
         <div style="margin-bottom: 8px;"><b>${ele.product.name}</b></div>
@@ -131,7 +130,6 @@ const findItemById = (cart, id) => {
 
 window.onload = async () => {
     const phoneList = await service.getPhones();
-    console.log("phoneList: ", phoneList);
     renderList(phoneList);
     cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
     renderCart(cart);
@@ -148,7 +146,7 @@ getEle('selectList').onchange = async () => {
 
 window.btnAddToCart = async (productId) => {
     const phoneData = await service.getPhoneById(productId);
-    const { id, name, price, screen, backCamera, frontCamera, img, desc, type } = phoneData;
+    const { id, name, price, screen, backCamera, frontCamera, image, desc, type } = phoneData;
     const product = new Product(
         id,
         name,
@@ -156,7 +154,7 @@ window.btnAddToCart = async (productId) => {
         screen,
         backCamera,
         frontCamera,
-        img,
+        image,
         desc,
         type
     );
