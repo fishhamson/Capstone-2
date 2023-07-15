@@ -128,13 +128,6 @@ const findItemById = (cart, id) => {
     return item;
 };
 
-window.onload = async () => {
-    const phoneList = await service.getPhones();
-    renderList(phoneList);
-    cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
-    renderCart(cart);
-};
-
 //lọc phone theo hãng
 getEle('selectList').onchange = async () => {
     const data = await service.getPhones();
@@ -142,27 +135,6 @@ getEle('selectList').onchange = async () => {
     let filterData =
         selectValue == 'all' ? data : data.filter((ele) => ele.type.toLowerCase() == selectValue);
     renderList(filterData);
-};
-
-window.btnAddToCart = async (productId) => {
-    const phoneData = await service.getPhoneById(productId);
-    const { id, name, price, screen, backCamera, frontCamera, image, desc, type } = phoneData;
-    const product = new Product(
-        id,
-        name,
-        price,
-        screen,
-        backCamera,
-        frontCamera,
-        image,
-        desc,
-        type
-    );
-    const newCartItem = new CartItem(product, 1);
-    let cartItem = findItemById(cart, newCartItem.product.id);
-    !cartItem ? cart.push(newCartItem) : cartItem.quantity++;
-    renderCart(cart);
-    localStorage.setItem('cart', JSON.stringify(cart));
 };
 
 // dấu cộng trong giỏ hàng
@@ -215,4 +187,22 @@ window.payNow = () => {
             text: 'Your cart is empty',
         });
     }
+};
+
+window.btnAddToCart = async (productId) => {
+    const phoneData = await service.getPhoneById(productId);
+    const { id, name, price, screen, backCamera, frontCamera, image, desc, type } = phoneData;
+    const product = new Product(id, name, price, screen, backCamera, frontCamera, image, desc, type);
+    const newCartItem = new CartItem(product, 1);
+    let cartItem = findItemById(cart, newCartItem.product.id);
+    !cartItem ? cart.push(newCartItem) : cartItem.quantity++;
+    renderCart(cart);
+    localStorage.setItem('cart', JSON.stringify(cart));
+};
+
+window.onload = async () => {
+    const phoneList = await service.getPhones();
+    renderList(phoneList);
+    cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
+    renderCart(cart);
 };
