@@ -140,9 +140,9 @@ window.onload = async () => {
 //lọc phone theo hãng
 getEle('selectList').onchange = async () => {
     const data = await service.getPhones();
-    const selectValue = getEle('selectList').value;
+    const selectValue = getEle('selectList').value.toLowerCase();
     let filterData =
-        selectValue == 'all' ? data : data.filter((ele) => ele.type == selectValue);
+        selectValue == 'all' ? data : data.filter((ele) => ele.type.toLowerCase() == selectValue);
     renderList(filterData);
 };
 
