@@ -3,7 +3,6 @@ function getElement(element) {
     return document.querySelector(element);
   }
 // AXIOS
-
 function getIphoneList() {
     var promise = axios({
       url: "https://64a3f42bc3b509573b56d12f.mockapi.io/products",
@@ -51,19 +50,6 @@ function getIphoneList() {
         document.getElementById("myTablePhone").innerHTML = htmlContent;
        
       };
-// const layThongTinSanPham = () =>{
-//   const element = document.querySelectorAll('#iphoneForm input, #iphoneForm select')
-//   let iphone = {}
-//   element.forEach((ele)=>{
-//     const { name, value } = ele
-//     iphone[name] = value
-//   })
-//   const {name, price, screen, backCamera, frontCamera, image, desc, type} = iphone
-//   let product = {}
-//   return new SanPham(name, price, screen, backCamera, frontCamera, image, desc, type) = product
-// }
-
-
 
 function getThongTinSanPham() {
     //lay thong tin từ user
@@ -102,8 +88,6 @@ function getThongTinSanPham() {
 
     return isValid ? product : undefined;
 }
-
-
 
 //ẩn btn cập nhật
 getElement("#btnThem").onclick = () => {
@@ -212,7 +196,6 @@ getElement("#CPrice").addEventListener("click", () => {
 })
 
 
-
 // tìm kiếm sản phẩm
 const searchProducts = ()=>{
     let input = getElement('#iphoneSearch').value.toLowerCase();
@@ -237,7 +220,7 @@ const searchProducts = ()=>{
       }
     }
   }
-  
+
   getElement('#btn-search').onclick = ()=>{
     searchProducts();
   }
